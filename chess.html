@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Club d'Échecs Moulay Idriss</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #c53030;
+            --light-color: #f7fafc;
+            --gold-color: #d4af37;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), #2d3748);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "♔♕♖♗♘♙";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.05;
+            font-size: 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.2rem;
+        }
+        
+        .logo-line-1 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #e2e8f0;
+        }
+        
+        .logo-line-2 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .logo-line-3 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--gold-color);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin: 1.5rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav a:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        .announcement-section {
+            margin-bottom: 3rem;
+        }
+        
+        .announcement-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .announcement-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .announcement-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .announcement-header i {
+            font-size: 2rem;
+            color: var(--gold-color);
+        }
+        
+        .announcement-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        @media (max-width: 900px) {
+            .announcement-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .announcement-image {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+        }
+        
+        .announcement-image img {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .announcement-details {
+            padding: 2.5rem;
+            text-align: left;
+        }
+        
+        .announcement-date {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .announcement-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .announcement-text {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #4a5568;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #25D366;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+        
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .members-section {
+            margin-bottom: 3rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .member-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--light-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1.2rem;
+        }
+        
+        .member-name {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+        }
+        
+        .member-role {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.3rem 1rem;
+            background: rgba(197, 48, 48, 0.1);
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+        
+        .ranking-section {
+            margin-bottom: 3rem;
+        }
+        
+        .ranking-table-container {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 1.5rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        thead {
+            background: linear-gradient(to right, var(--primary-color), #2d3748);
+        }
+        
+        th {
+            padding: 1.2rem 1rem;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: var(--transition);
+        }
+        
+        tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        tbody tr:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:nth-child(odd):hover {
+            background-color: #f0f0f0;
+        }
+        
+        td {
+            padding: 1.2rem 1rem;
+            text-align: center;
+        }
+        
+        .rank {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .rank-1 {
+            color: var(--gold-color);
+            font-weight: 800;
+        }
+        
+        .rank-2 {
+            color: #c0c0c0;
+            font-weight: 800;
+        }
+        
+        .rank-3 {
+            color: #cd7f32;
+            font-weight: 800;
+        }
+        
+        .player-name {
+            font-weight: 600;
+            color: #333;
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+        
+        .elo-score {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: linear-gradient(to right, var(--primary-color), #2d3748);
+            color: white;
+            margin-top: 4rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .floating-chess {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.1;
+            z-index: -1;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo-line-2 {
+                font-size: 3.2rem;
+            }
+            
+            .logo-line-1, .logo-line-3 {
+                font-size: 1.4rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+            
+            nav a {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .member-photo {
+                width: 130px;
+                height: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- عناصر الشطرنج العائمة -->
+    <div class="floating-chess" style="top: 10%; left: 5%;">♔</div>
+    <div class="floating-chess" style="top: 15%; right: 10%;">♕</div>
+    <div class="floating-chess" style="bottom: 20%; left: 8%;">♖</div>
+    <div class="floating-chess" style="bottom: 15%; right: 5%;">♘</div>
+    
+    <header>
+        <div class="logo-text">
+            <div class="logo-line-1">CHESS</div>
+            <div class="logo-line-2">CLUB MOULAY</div>
+            <div class="logo-line-3">IDRISS</div>
+        </div>
+        <p class="subtitle">Le lycée Moulay Idriss annonce l'ouverture du Club d'Échecs, encadré par le professeur Said Boujdid. Rejoignez-nous pour développer votre stratégie, concentration et esprit de compétition.</p>
+        <nav>
+            <a href="#annonce"><i class="fas fa-bullhorn"></i> Annonce</a>
+            <a href="#membres"><i class="fas fa-users"></i> Membres</a>
+            <a href="#classement"><i class="fas fa-trophy"></i> Classement</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="annonce" class="announcement-section">
+            <h2 class="section-title">Annonce Officielle</h2>
+            <div class="announcement-container">
+                <div class="announcement-header">
+                    <i class="fas fa-chess-king"></i>
+                    <h3>Nouveau Club d'Échecs au Lycée Moulay Idriss</h3>
+                </div>
+                <div class="announcement-content">
+                    <div class="announcement-image">
+                        <!-- هذه الصورة هي المكان المخصص للإعلانات - يمكنك استبدالها بأي صورة أخرى -->
+                        <img src="https://images.unsplash.com/photo-1586165368502-1bad197a6461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Club d'Échecs Moulay Idriss">
+                    </div>
+                    <div class="announcement-details">
+                        <div class="announcement-date">5 Décembre 2024</div>
+                        <h3 class="announcement-title">Ouverture du Club d'Échecs Moulay Idriss</h3>
+                        <div class="announcement-text">
+                            <p><strong>Le lycée Moulay Idriss annonce l'ouverture du Club d'Échecs, encadré par le professeur Said Boujdid.</strong></p>
+                            <p>Le club est ouvert à tous les élèves passionnés ou débutants souhaitant apprendre le jeu d'échecs, développer leur stratégie, leur concentration et leur esprit de compétition dans une ambiance motivante.</p>
+                            <p><i class="fas fa-clock"></i> <strong>Horaires:</strong> Tous les mercredis de 16h à 18h</p>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Lieu:</strong> Salle des activités, Lycée Moulay Idriss</p>
+                            <p><i class="fas fa-user-tie"></i> <strong>Encadrant:</strong> Professeur Said Boujdid</p>
+                        </div>
+                        <a href="https://chat.whatsapp.com/F9631YRGajb67JHomcQBS4" class="whatsapp-button" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            Rejoindre le groupe WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="membres" class="members-section">
+            <h2 class="section-title">Membres du Club</h2>
+            <div class="gallery">
+                <div class="member-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Bachar Lagouass" class="member-photo">
+                    <div class="member-name">Bachar Lagouass</div>
+                    <div class="member-role">Capitaine du Club</div>
+                    <p>Joueur international, Champion du Maroc 2023</p>
+                </div>
+                <div class="member-card">
+                    <img src="https://randomuser.me/api/portraits/men/15.jpg" alt="Said Boujdid" class="member-photo">
+                    <div class="member-name">Said Boujdid</div>
+                    <div class="member-role">Professeur Encadrant</div>
+                    <p>Entraîneur certifié, spécialiste des ouvertures</p>
+                </div>
+                <div class="member-card">
+                    <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="Yassir Adrdor" class="member-photo">
+                    <div class="member-name">Yassir Adrdor</div>
+                    <div class="member-role">Joueur Professionnel</div>
+                    <p>Champion régional trois années consécutives</p>
+                </div>
+                <div class="member-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Fatima Zahra" class="member-photo">
+                    <div class="member-name">Fatima Zahra</div>
+                    <div class="member-role">Joueuse Élite</div>
+                    <p>Vice-championne nationale junior 2024</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="classement" class="ranking-section">
+            <h2 class="section-title">Classement ELO des Joueurs</h2>
+            <div class="ranking-table-container">
+                <table id="ranking-table">
+                    <thead>
+                        <tr>
+                            <th width="15%">Rang</th>
+                            <th width="60%">Nom du Joueur</th>
+                            <th width="25%">Points ELO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Les données seront ajoutées via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Club d'Échecs Moulay Idriss</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>contact@chessmoulayidriss.ma</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+212 5XX XXX XXX</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Lycée Moulay Idriss, Maroc</span>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Club d'Échecs Moulay Idriss. Tous droits réservés.
+        </div>
+    </footer>
+
+<script>
+    // Données des joueurs en français avec 10 noms supplémentaires
+    const players = [
+        { name: "Bachar Lagouass", elo: 2200 },
+        { name: "Said Boujdid", elo: 2100 },
+        { name: "Yassir Adrdor", elo: 1950 },
+        { name: "Fatima Zahra", elo: 1900 },
+        { name: "Ahmed El Amrani", elo: 1850 },
+        { name: "Karim Belhaj", elo: 1820 },
+        { name: "Samira Touimi", elo: 1780 },
+        { name: "Mohammed Alami", elo: 1750 },
+        { name: "Leila Benjelloun", elo: 1720 },
+        { name: "Omar Zouhair", elo: 1680 },
+        { name: "Nadia El Fassi", elo: 1650 },
+        { name: "Hassan Chraibi", elo: 1620 },
+        { name: "Salma Kabbaj", elo: 1600 }
+    ];
+
+    const tableBody = document.querySelector('#ranking-table tbody');
+    
+    // Trier les joueurs par ELO décroissant
+    players.sort((a, b) => b.elo - a.elo);
+    
+    // Ajouter les lignes au tableau
+    players.forEach((player, index) => {
+        let rankClass = '';
+        if (index === 0) rankClass = 'rank-1';
+        else if (index === 1) rankClass = 'rank-2';
+        else if (index === 2) rankClass = 'rank-3';
+        
+        const row = `
+            <tr>
+                <td><span class="rank ${rankClass}">${index + 1}</span></td>
+                <td class="player-name">${player.name}</td>
+                <td><span class="elo-score">${player.elo}</span></td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+    
+    // Effets interactifs pour les cartes des membres
+    document.querySelectorAll('.member-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+    
+    // Animation au défilement
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        const scrollPosition = window.scrollY + window.innerHeight;
+        
+        sections.forEach(section => {
+            if (scrollPosition > section.offsetTop + 100) {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }
+        });
+    });
+    
+    // Initialiser les animations
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    });
+    
+    // Lancer les animations après le chargement
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            });
+        }, 300);
+    });
+</script>
+</body>
+</html>
